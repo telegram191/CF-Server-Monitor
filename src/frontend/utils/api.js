@@ -8,6 +8,12 @@ import { resolveDisplayMode } from './displayMode.js'
 
 export { getApiBases, getWsBase }
 
+export async function fetchUptimeStatus(signal) {
+  const result = await http.get('/api/uptime', { autoRedirect: false, signal })
+  if (result.error || !result.data) throw new Error('Website status unavailable')
+  return result.data
+}
+
 export const VERSION = ref('')
 export const LAST_WORKERS_VERSION = ref('')
 export const LAST_AGENT_VERSION = ref('')

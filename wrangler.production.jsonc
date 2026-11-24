@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cf-server-monitor",
+  "account_id": "d03b6ee26cbb3d7f1a28e8e9c9b8511b",
+  "main": "src/index.js",
+  "compatibility_date": "2024-12-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "keep_vars": true,
+  "routes": [{ "pattern": "monitor.mmtv.asia", "custom_domain": true }],
+  "triggers": { "crons": ["*/1 * * * *", "0 * * * *"] },
+  "assets": { "directory": "./dist", "binding": "ASSETS" },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "server-monitor-db",
+    "database_id": "8b47cc37-b616-46fc-8f7f-3f8ab8fc111d"
+  }],
+  "durable_objects": {
+    "bindings": [{ "name": "METRICS_BROADCASTER", "class_name": "MetricsBroadcaster" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["MetricsBroadcaster"] }],
+  "vars": {
+    "UPTIMEFLARE_API_URL": "https://uptimeflare-telegram191.pages.dev/api/data"
+  }
+}

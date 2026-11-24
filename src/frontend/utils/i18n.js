@@ -2,6 +2,14 @@ import { ref, reactive, computed } from 'vue'
 
 const translations = reactive({
   en: {
+    websiteUptime: 'Website uptime',
+    websiteUnknown: 'UNKNOWN',
+    websiteHistory: 'History',
+    websiteRefresh: 'Refresh',
+    websiteInterval: 'Checks every 5 min',
+    websiteChecked: 'Checked',
+    websiteUnavailable: 'Website status unavailable. Retry with Refresh.',
+    websiteStale: 'Stale · No recent check received.',
     theme: 'Theme',
     themeAuto: 'Follow System',
     themeDark: 'Dark',
@@ -484,6 +492,14 @@ const translations = reactive({
     view: 'View',
   },
   zh: {
+    websiteUptime: '网站状态',
+    websiteUnknown: '未知',
+    websiteHistory: '历史记录',
+    websiteRefresh: '刷新',
+    websiteInterval: '每 5 分钟检查',
+    websiteChecked: '检查时间',
+    websiteUnavailable: '网站状态暂不可用，请刷新重试。',
+    websiteStale: '数据过期 · 未收到最近检查。',
     collectInterval: '采集间隔（秒）',
     theme: '主题',
     themeAuto: '跟随系统',

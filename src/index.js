@@ -5,6 +5,7 @@ import { handleAdminAPI } from './handlers/admin.js';
 import { serveFrontend } from './handlers/frontend.js';
 import { handleUpdate, handleWebSocketUpgrade, handleUpdateWebSocketUpgrade } from './handlers/update.js';
 import { handleServerAPI, handleServersAPI } from './handlers/dashboard.js';
+import { handleUptimeAPI } from './handlers/uptime.js';
 import { handleTheme } from './handlers/theme.js';
 import { isValidThemeOptions, loadSettings, loadSiteSettings, loadAppearanceOptions, normalizeFrontendWsTimeoutMinutes, normalizeLongHistoryPoints, saveThemeOptions, setDebug, debug } from './utils/settings.js';
 import { checkAuth, simpleAuthResponse } from './middleware/auth.js';
@@ -372,6 +373,10 @@ export default {
       { method: 'GET', path: '/api/servers', handler: async () => {
         await ensureFullSettings();
         return handleServersAPI(request, env, sys);
+      }},
+      { method: 'GET', path: '/api/uptime', handler: async () => {
+        await ensureSiteSettings();
+        return handleUptimeAPI(request, env, sys, ctx);
       }},
       { method: 'GET', path: '/api/ws', handler: async () => handleWebSocketUpgrade(request, env) },
 

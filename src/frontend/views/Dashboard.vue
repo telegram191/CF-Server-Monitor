@@ -150,6 +150,8 @@
       </div>
     </div>
 
+    <WebsiteUptimePanel />
+
     <div id="view-card" class="view-panel" :class="{ active: isCardView }">
       <div v-if="groupedServers.length === 0" class="empty-state">
         [!] {{ trans.noServer }}，请在 <a href="/admin#admin" class="admin-link-color">{{ trans.backToAdmin }}</a> 中添加
@@ -367,6 +369,7 @@
 import { ref, computed, inject, nextTick, onMounted, onUnmounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import TerminalHeader from '../components/TerminalHeader.vue'
+import WebsiteUptimePanel from '../components/WebsiteUptimePanel.vue'
 import ServerBarCard from '../components/ServerBarCard.vue'
 import ServerRingCard from '../components/ServerRingCard.vue'
 import Footer from '../components/Footer.vue'

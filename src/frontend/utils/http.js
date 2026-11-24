@@ -124,7 +124,8 @@ const request = async (method, url, body, options = {}) => {
       method,
       headers,
       body: body != null ? JSON.stringify(body) : undefined,
-      credentials: 'include'
+      credentials: 'include',
+      signal: options.signal
     })
     return { ...(await handleResponse(res, { autoRedirect, baseUrl: base })), baseUrl: base }
   } catch (e) {
